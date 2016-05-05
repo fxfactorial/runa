@@ -10,10 +10,11 @@ snippets as well!
 
 Usage
 =====
-Install by cloning this repo, then in the repo do:
-`opam pin add runa . -y` and then in your `js_of_ocaml` programs
-simply add `runa` to your `-package` declaration, be sure to do
-`-linkpkg` as well for `ocamlfind`.
+
+Install by cloning this repo, then in the repo do: `opam pin add runa
+. -y` or just `opam install runa`, and then in your `js_of_ocaml`
+programs simply add `runa` to your `-package` declaration, be sure to
+do `-linkpkg` as well for `ocamlfind`.
 
 Interface
 ==========
