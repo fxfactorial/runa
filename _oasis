@@ -1,0 +1,26 @@
+# -*- conf -*-
+OASISFormat: 0.4
+Name:        runa
+Version:     0.1.0
+Synopsis:    General helper library for js_of_ocaml
+Authors:     Edgar Aroutiounian <edgar.factorial@gmail.com>
+Maintainers: Edgar Aroutiounian <edgar.factorial@gmail.com>
+Homepage:    https://github.com/fxfactorial/runa
+License:     BSD-3-clause
+Plugins:     META (0.4), DevFiles (0.4)
+BuildTools: ocamlbuild
+
+Description: helper library
+
+Library react_js
+  Path: src
+  BuildTools:ocamlbuild
+  Modules : Runa
+  install: true
+  CompiledObject: byte
+  BuildDepends: js_of_ocaml (>= 2.7), js_of_ocaml.ppx
+
+SourceRepository master
+  Type:     git
+  Location: https://github.com/fxfactorial/runa.git
+  Browser:  https://github.com/fxfactorial/runa
