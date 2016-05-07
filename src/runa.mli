@@ -2,7 +2,10 @@
     programs. *)
 
 (** Easy access of field by name from JS Object *)
-val ( <!> ) : 'a -> 'b -> 'c
+val ( <!> ) : 'a -> string -> 'c
+
+(** Safe version of <!> *)
+val ( <*> ) : 'a -> string -> 'c option
 
 (** Wrap your OCaml function to JS with this *)
 val ( !@ ) : ('a -> 'b) -> ('c, 'a -> 'b) Js.meth_callback
@@ -11,13 +14,13 @@ val ( !@ ) : ('a -> 'b) -> ('c, 'a -> 'b) Js.meth_callback
 val ( !! ) : 'a -> Js.Unsafe.any
 
 (** Try to get a string out of given Object *)
-val stringify : 'a -> string
+val stringify : _ Js.t -> string
 
 (** Alias of Js.Unsafe.meth_call*)
-val m : 'a -> string -> Js.Unsafe.any array -> 'b
+val m : _ Js.t -> string -> Js.Unsafe.any array -> 'b
 
 (** Combine two JS objects into one *)
-val merge : 'a -> 'a -> < .. > Js.t
+val merge : _ Js.t -> _ Js.t -> < .. > Js.t
 
 (** Create a JS object out of a Jstable *)
 val object_of_table : Js.Unsafe.any Jstable.t -> 'a
@@ -34,7 +37,7 @@ val set_interval : every:float -> (unit -> unit) -> Dom_html.interval_id
 
 (** Call your function with the scope of JavaScript's this object,
     very useful *)
-val with_this : ('a -> 'b) -> Js.Unsafe.any
+val with_this : (_ Js.t -> 'b) -> Js.Unsafe.any
 
 (** Turn JavaScript string array into OCaml list of string *)
 val to_string_list : Js.string_array Js.t -> string list
@@ -43,10 +46,10 @@ val to_string_list : Js.string_array Js.t -> string list
 val of_string_list : string list -> Js.js_string Js.t Js.js_array Js.t
 
 (** require for CommonJS environments *)
-val require : string -> 'a
+val require : string -> _ Js.t
 
 (** Parse a string as JSON *)
-val json_parse : string -> 'a
+val json_parse : string -> _ Js.t
 
 (** Get all keys of an Object *)
 val keys : Js.Unsafe.any -> string list

@@ -1,4 +1,8 @@
-let ( <!> ) obj field = Js.Unsafe.get obj field
+let ( <!> ) obj field = Js.Unsafe.get obj (Js.string field)
+
+let ( <*> ) obj field = Js.Opt.(
+    obj <!> field |> return |> to_option
+  )
 
 let ( !@ ) f = Js.wrap_callback f
 
@@ -23,7 +27,7 @@ let object_of_table t =
   |> Js.Unsafe.obj
 
 let debug item =
-  (Js.Unsafe.global##.DEBUG_VAR := item) |> ignore
+  (Js.Unsafe.global##.DEBUGVAR := item) |> ignore
 
 let log l =
   Firebug.console##log l

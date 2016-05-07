@@ -16,7 +16,7 @@ build: [
 install: ["ocaml" "setup.ml" "-install"]
 available: [ ocaml-version >= "4.02.0" ]
 remove: [
-  ["ocamlfind" "remove" "react_js"]
+  ["ocamlfind" "remove" "runa"]
 ]
 build-test: [
   ["oasis" "setup"]
